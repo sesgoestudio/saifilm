@@ -1,1 +1,445 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="SAI FILM — Photography, Film & Creative Production.">
+  <title>SAI FILM® — Visual Stories</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080808;
+      --white: #f4f2ee;
+      --muted: #888;
+      --line: #292929;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      padding: 26px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(#0009, transparent);
+    }
+
+    .logo {
+      font-family: 'Manrope', sans-serif;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    nav { display: flex; gap: 30px; }
+
+    nav a, .menu-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    nav a { color: #ccc; transition: color .3s; }
+    nav a:hover { color: white; }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 6% 10%;
+      overflow: hidden;
+      background:
+        linear-gradient(0deg, #000 0%, #0003 55%, #0005 100%),
+        url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2200&q=85')
+        center/cover;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: appear 1.2s ease both;
+    }
+
+    .eyebrow {
+      color: #bbb;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(65px, 13vw, 170px);
+      line-height: .82;
+      letter-spacing: -.09em;
+      font-weight: 700;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-top: 35px;
+      gap: 20px;
+    }
+
+    .hero-bottom p {
+      max-width: 330px;
+      color: #ccc;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .circle-link {
+      width: 65px;
+      height: 65px;
+      border: 1px solid #ffffff70;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      transition: .3s;
+    }
+
+    .circle-link:hover {
+      background: white;
+      color: black;
+      transform: rotate(45deg);
+    }
+
+    section { padding: 110px 6%; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 45px;
+      gap: 20px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(38px, 6vw, 75px);
+      letter-spacing: -.07em;
+    }
+
+    .section-heading span {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px 22px;
+    }
+
+    .project { cursor: pointer; }
+
+    .project-image {
+      overflow: hidden;
+      aspect-ratio: 16/11;
+      background: #191919;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.2,.7,.2,1);
+      filter: brightness(.83);
+    }
+
+    .project:hover img {
+      transform: scale(1.045);
+      filter: brightness(1);
+    }
+
+    .project-info {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 17px;
+      gap: 10px;
+    }
+
+    .project-info h3 { font-size: 17px; font-weight: 500; }
+    .project-info span { color: var(--muted); font-size: 11px; }
+
+    .about {
+      background: #111;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(42px, 6vw, 78px);
+      letter-spacing: -.07em;
+      line-height: .98;
+    }
+
+    .about p {
+      color: #aaa;
+      line-height: 1.9;
+      font-size: 14px;
+      margin-top: 25px;
+      max-width: 480px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .service {
+      padding: 28px 10px;
+      border-bottom: 1px solid var(--line);
+      font-size: clamp(18px, 3vw, 30px);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .service span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .contact {
+      background: #eeeae3;
+      color: #111;
+      text-align: center;
+      padding: 130px 6%;
+    }
+
+    .contact h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(48px, 10vw, 115px);
+      letter-spacing: -.09em;
+      line-height: .95;
+    }
+
+    .contact p { margin: 25px 0; color: #555; }
+
+    .contact-button {
+      display: inline-block;
+      border: 1px solid #111;
+      padding: 17px 30px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .contact-button:hover { background: #111; color: white; }
+
+    footer {
+      padding: 30px 6%;
+      display: flex;
+      justify-content: space-between;
+      color: #888;
+      font-size: 11px;
+      gap: 15px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .8s, transform .8s;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width:700px) {
+      header { padding: 20px 5%; }
+      nav { gap: 13px; }
+      nav a { font-size: 8px; letter-spacing: .5px; }
+      .hero { padding: 0 5% 12%; }
+      .hero-bottom { align-items: center; }
+      .circle-link { flex-shrink: 0; }
+      section { padding: 80px 5%; }
+      .projects { grid-template-columns: 1fr; gap: 35px; }
+      .about { grid-template-columns: 1fr; gap: 25px; }
+      .services { grid-template-columns: 1fr; }
+      footer { flex-wrap: wrap; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#">SAI FILM<sup>®</sup></a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Photography · Film · Creative Production</div>
+      <h1>VISUAL<br>STORIES.</h1>
+      <div class="hero-bottom">
+        <p>We capture moments, create images and tell stories through the language of photography and film.</p>
+        <a class="circle-link" href="#work" aria-label="Ver proyectos">↘</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-heading reveal">
+      <div>
+        <span>SELECTED WORK — 2026</span>
+        <h2>Selected projects.</h2>
+      </div>
+      <span>01 — 04</span>
+    </div>
+
+    <div class="projects">
+      <article class="project reveal">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85" alt="Producción audiovisual">
+        </div>
+        <div class="project-info">
+          <h3>Live Experiences</h3><span>FILM / 01</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" alt="Fotografía de retrato">
+        </div>
+        <div class="project-info">
+          <h3>Portrait Studies</h3><span>PHOTO / 02</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=85" alt="Producción musical">
+        </div>
+        <div class="project-info">
+          <h3>Creative Sessions</h3><span>FILM / 03</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt="Producción creativa">
+        </div>
+        <div class="project-info">
+          <h3>Visual Production</h3><span>CREATIVE / 04</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="reveal">
+      <div class="eyebrow">BEHIND THE LENS</div>
+      <h2>Images that<br>tell stories.</h2>
+    </div>
+    <div class="reveal">
+      <p>
+        SAI FILM is a photography and audiovisual production brand
+        focused on capturing authentic moments and transforming
+        ideas into visual experiences.
+      </p>
+      <p>
+        From photography and film production to editing,
+        podcasts and creative content.
+      </p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-heading reveal">
+      <div>
+        <span>WHAT WE DO</span>
+        <h2>Our services.</h2>
+      </div>
+    </div>
+
+    <div class="services reveal">
+      <div class="service">Photography <span>01 ↗</span></div>
+      <div class="service">Film production <span>02 ↗</span></div>
+      <div class="service">Podcast production <span>03 ↗</span></div>
+      <div class="service">Video editing <span>04 ↗</span></div>
+      <div class="service">Clips & Reels <span>05 ↗</span></div>
+      <div class="service">Videobooks <span>06 ↗</span></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="eyebrow">HAVE A PROJECT IN MIND?</div>
+    <h2>LET'S CREATE<br>SOMETHING.</h2>
+    <p>Every great story starts with an idea.</p>
+    <a class="contact-button" href="mailto:contacto@saifilm.com">
+      Start a conversation ↗
+    </a>
+  </section>
+</main>
+
+<footer>
+  <a class="logo" href="#">SAI FILM®</a>
+  <span>PHOTOGRAPHY · FILM · CREATIVE PRODUCTION</span>
+  <span>© 2026 SAI FILM</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+
