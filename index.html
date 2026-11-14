@@ -553,7 +553,7 @@
 <style>
 #services .services{display:grid;grid-template-columns:1fr;gap:0}.service-accordion{border-bottom:1px solid #555}.service-accordion:first-child{border-top:1px solid #555}.service-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 4px;font-size:clamp(18px,2.5vw,27px);font-weight:500}.service-accordion summary::-webkit-details-marker{display:none}.service-accordion summary:after{content:'＋';font-size:18px;color:#aaa}.service-accordion[open] summary:after{content:'−'}.service-number{font-size:11px;letter-spacing:.12em;color:#999}.service-portfolio-content{padding:0 4px 28px}.service-portfolio-content>p{max-width:650px;color:#aaa;line-height:1.6}.service-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:12px}.service-photo-grid a{display:block;position:relative;overflow:hidden;background:#171717;color:#fff;text-decoration:none}.service-photo-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}.service-photo-grid a:hover img{transform:scale(1.035)}.service-photo-grid a span{display:block;padding:9px 10px;font-size:11px}.service-empty{font-size:13px;color:#999}@media(max-width:600px){.service-accordion summary{padding:18px 2px}.service-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 </style>
-<script type="module" src="./js/portfolio.js?v=21"></script>
+<script type="module" src="./js/portfolio.js?v=22"></script>
 
 <style>
 /* Carrusel editorial minimalista */
@@ -587,6 +587,8 @@
  .modal-text{font-size:10px;margin-top:10px}
 }
 @media(prefers-reduced-motion:reduce){.modal-slide.active{animation:none}}
+/* Proyecto: vista vertical tipo Reels para videos locales dentro del carrusel. */
+.media-card video.admin-video-preview{width:100%;height:150px;object-fit:contain;background:#050505}.modal-slide video{display:block;width:100%;height:100%;object-fit:contain;background:#050505}.modal-slides.video-active{width:min(100%,430px);height:min(72svh,760px);min-height:260px;aspect-ratio:9/16;background:#000}.modal-slides.video-active .modal-slide video,.modal-slides.video-active .modal-slide iframe{width:100%;height:100%;object-fit:contain}@media(max-width:700px){.modal-slides.video-active{width:min(100%,430px);height:min(70svh,680px);min-height:230px;margin-inline:auto}}
 </style>
 
 
