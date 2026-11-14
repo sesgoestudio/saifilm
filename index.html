@@ -156,9 +156,26 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      font-size: 23px;
+      font-size: 0;
       transition: .3s;
     }
+    .circle-link::before {
+      content: "";
+      width: 13px;
+      height: 13px;
+      border-right: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+      transform: translate(-3px,-3px);
+    }
+    .circle-link::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 1px;
+      background: currentColor;
+      transform: rotate(45deg);
+    }
+    .circle-link { position: relative; }
 
     .circle-link:hover {
       background: white;
@@ -299,13 +316,24 @@
     .contact p { margin: 25px 0; color: #555; }
 
     .contact-button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
       border: 1px solid #111;
       padding: 17px 30px;
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: .3s;
+    }
+    .contact-button::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-top: 1px solid currentColor;
+      border-right: 1px solid currentColor;
+      transform: rotate(45deg);
+      flex: 0 0 auto;
     }
 
     .contact-button:hover { background: #111; color: white; }
@@ -393,7 +421,7 @@
       <h1>HISTORIAS<br>VISUALES.</h1>
       <div class="hero-bottom">
         <p>Capturamos momentos, creamos imágenes y contamos historias a través de la fotografía y el cine.</p>
-        <a class="circle-link" href="#work" aria-label="Ver portafolio">↘</a>
+        <a class="circle-link" href="#work" aria-label="Ver portafolio"></a>
       </div>
     </div>
   </section>
@@ -451,7 +479,7 @@
     <h2>CREEMOS<br>ALGO JUNTOS.</h2>
     <p>Toda gran historia comienza con una idea.</p>
     <a class="contact-button" href="mailto:contacto@saifilm.com">
-      Iniciemos una conversación ↗
+      Iniciemos una conversación
     </a>
   </section>
 </main>
@@ -490,7 +518,7 @@
 <style>
 #services .services{display:grid;grid-template-columns:1fr;gap:0}.service-accordion{border-bottom:1px solid #555}.service-accordion:first-child{border-top:1px solid #555}.service-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 4px;font-size:clamp(18px,2.5vw,27px);font-weight:500}.service-accordion summary::-webkit-details-marker{display:none}.service-accordion summary:after{content:'＋';font-size:18px;color:#aaa}.service-accordion[open] summary:after{content:'−'}.service-number{font-size:11px;letter-spacing:.12em;color:#999}.service-portfolio-content{padding:0 4px 28px}.service-portfolio-content>p{max-width:650px;color:#aaa;line-height:1.6}.service-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:12px}.service-photo-grid a{display:block;position:relative;overflow:hidden;background:#171717;color:#fff;text-decoration:none}.service-photo-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}.service-photo-grid a:hover img{transform:scale(1.035)}.service-photo-grid a span{display:block;padding:9px 10px;font-size:11px}.service-empty{font-size:13px;color:#999}@media(max-width:600px){.service-accordion summary{padding:18px 2px}.service-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 </style>
-<script type="module" src="./js/portfolio.js?v=11"></script>
+<script type="module" src="./js/portfolio.js?v=12"></script>
 
 <style>
 /* Carrusel editorial minimalista */
