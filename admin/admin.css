@@ -93,3 +93,10 @@ img{max-width:100%}
  cursor:pointer!important;z-index:2!important;font-size:100px!important;
 }
 .upload:focus-within{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Selector de fotografías: botón nativo con activación directa del input */
+.upload-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.upload-button{display:flex;justify-content:center;align-items:center;min-height:48px;padding:13px 20px;border:1px dashed #9b8968;background:transparent;color:var(--accent);cursor:pointer;touch-action:manipulation}
+.upload-button:disabled{opacity:.35;cursor:not-allowed}
+.file-picker-input{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+@media(max-width:700px){.upload-row{display:block}.upload-button{width:100%;min-height:52px}}
