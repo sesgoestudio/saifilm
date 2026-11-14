@@ -550,7 +550,45 @@
   .legal-footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;width:100%;padding:10px 0 2px;border-top:1px solid #292929}
   .legal-footer-links a{font-size:10px;color:#888;transition:color .2s}
   .legal-footer-links a:hover,.legal-footer-links a:focus-visible{color:#fff}
-  @media(max-width:700px){footer{gap:14px;flex-wrap:wrap}.social-footer{gap:16px}.legal-footer-links{gap:12px 16px}.legal-footer-links a{font-size:10px}.admin-footer-link{flex-basis:100%;text-align:center;padding-top:8px}}
+  /* Footer editorial: jerarquía clara y alineación consistente */
+  footer{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:18px 28px;
+    padding:38px 6% 26px;
+    border-top:1px solid #242424;
+    background:#080808;
+  }
+  footer>.logo{justify-self:start}
+  footer>span:nth-of-type(1){justify-self:start;color:#777;letter-spacing:.13em;font-size:9px}
+  footer>span:nth-of-type(2){justify-self:end;color:#666;font-size:10px}
+  .social-footer{grid-column:2;grid-row:1;justify-self:end;width:auto;padding:0;gap:22px}
+  .legal-footer-links{grid-column:1 / -1;justify-content:flex-start;padding:18px 0 0;gap:12px 24px}
+  .admin-footer-link{grid-column:1 / -1;justify-self:end;margin-top:-8px}
+  @media(max-width:700px){
+    footer{
+      grid-template-columns:1fr;
+      justify-items:center;
+      gap:17px;
+      padding:34px 7% 26px;
+      text-align:center;
+    }
+    footer>.logo,footer>span:nth-of-type(1),footer>span:nth-of-type(2),
+    .social-footer,.legal-footer-links,.admin-footer-link{
+      grid-column:1;
+      grid-row:auto;
+      justify-self:center;
+      width:100%;
+    }
+    footer>span:nth-of-type(1){max-width:260px;line-height:1.7;font-size:9px}
+    footer>span:nth-of-type(2){font-size:10px}
+    .social-footer{gap:24px;padding:3px 0 5px}
+    .social-footer a{font-size:10px}
+    .legal-footer-links{justify-content:center;gap:13px 18px;padding:18px 0 0}
+    .legal-footer-links a{font-size:9px}
+    .admin-footer-link{padding-top:2px;flex-basis:auto}
+  }{footer{gap:14px;flex-wrap:wrap}.social-footer{gap:16px}.legal-footer-links{gap:12px 16px}.legal-footer-links a{font-size:10px}.admin-footer-link{flex-basis:100%;text-align:center;padding-top:8px}}
 </style>
 
 <script>
