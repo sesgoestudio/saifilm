@@ -1,4 +1,4 @@
-import { supabase } from '../js/supabase.js';
+import { supabase } from '../js/supabase.js?v=10';
 const $=id=>document.getElementById(id),q=sel=>document.querySelector(sel);
 const S={user:null,projects:[],media:[],id:null,categories:[],settings:{},services:[],serviceMedia:[],serviceId:null};
 const msg=(id,t,bad=false)=>{$(id).textContent=t;$(id).classList.toggle('error',bad)};
