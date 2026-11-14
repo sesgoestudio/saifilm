@@ -82,3 +82,14 @@ img{max-width:100%}
  .category-row .check,.category-row button{grid-column:1}
  .service-form-actions{grid-template-columns:1fr}
 }
+
+
+/* Selector de archivos accesible y compatible con navegadores móviles */
+.upload{position:relative;display:flex;overflow:hidden;isolation:isolate;cursor:pointer;touch-action:manipulation}
+.upload input[type="file"]{
+ display:block!important;position:absolute!important;inset:0!important;
+ width:100%!important;height:100%!important;min-height:100%!important;
+ margin:0!important;padding:0!important;opacity:0!important;
+ cursor:pointer!important;z-index:2!important;font-size:100px!important;
+}
+.upload:focus-within{outline:2px solid var(--accent);outline-offset:3px}
