@@ -18,4 +18,14 @@
 <label>Texto del pie de página<input id="footerText"></label><label>Texto secundario del pie de página<input id="footerTagline"></label>
 <div class="wide"><button class="primary" type="submit">Guardar contenido del sitio</button></div></form><p id="settingsMessage" class="message"></p></section>
 <section id="categoriesPanel" class="tab-panel panel" hidden><div class="editor-head"><div><p class="eyebrow">ORGANIZACIÓN DEL PORTAFOLIO</p><h2>Categorías</h2></div></div><form id="categoryForm" class="category-form"><input id="categoryName" placeholder="Nombre de la categoría" required><input id="categoryOrder" type="number" placeholder="Orden" value="0"><button class="primary">Añadir categoría</button></form><div id="categoryList" class="category-list"></div><p id="categoryMessage" class="message"></p></section>
-</section><footer>SAI FILM® — ESTUDIO PRIVADO DE CONTENIDO</footer></main><script type="module" src="./admin.js"></script></body></html>
+</section><footer>SAI FILM® — ESTUDIO PRIVADO DE CONTENIDO</footer></main><script>
+window.addEventListener('error', function(e) {
+  var m=document.getElementById('loginMessage');
+  if(m) { m.textContent='Error al cargar el administrador: '+(e.message||'No se pudo cargar un archivo JavaScript.'); m.classList.add('error'); }
+});
+window.addEventListener('unhandledrejection', function(e) {
+  var m=document.getElementById('loginMessage');
+  if(m) { var reason=e.reason; m.textContent='Error de conexión: '+(reason&&reason.message?reason.message:String(reason||'Error desconocido')); m.classList.add('error'); }
+});
+</script>
+<script type="module" src="./admin.js?v=3"></script></body></html>
