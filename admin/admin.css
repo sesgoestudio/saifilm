@@ -8,3 +8,7 @@
 .upload-button:has(input:disabled){opacity:.35;cursor:not-allowed}
 .file-picker-input{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;opacity:0!important;cursor:pointer!important;pointer-events:auto!important;margin:0!important;padding:0!important}
 @media(max-width:700px){.upload-row{display:block}.upload-button{width:100%;min-height:52px}}
+
+/* Selector nativo de archivos también para portafolios de servicios: evita display:none en móviles. */
+.upload{position:relative;overflow:hidden;min-height:48px;align-items:center}
+.upload input,.service-gallery-editor .upload input{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important;opacity:0!important;cursor:pointer!important;pointer-events:auto!important;margin:0!important;padding:0!important}
