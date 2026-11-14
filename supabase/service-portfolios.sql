@@ -17,6 +17,8 @@ create index if not exists service_portfolios_order_idx on public.service_portfo
 create index if not exists service_portfolio_media_service_idx on public.service_portfolio_media(service_id,sort_order);
 alter table public.service_portfolios enable row level security;
 alter table public.service_portfolio_media enable row level security;
+grant select on public.service_portfolios, public.service_portfolio_media to anon, authenticated;
+grant all on public.service_portfolios, public.service_portfolio_media to authenticated;
 drop policy if exists "Public can view active service portfolios" on public.service_portfolios;
 create policy "Public can view active service portfolios" on public.service_portfolios for select using (is_active=true);
 drop policy if exists "Admins manage service portfolios" on public.service_portfolios;
