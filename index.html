@@ -405,7 +405,13 @@
   <a class="logo" href="#">SAI FILM®</a>
   <span>FOTOGRAFÍA · CINE · PRODUCCIÓN AUDIOVISUAL</span>
   <span>© 2026 SAI FILM</span>
+  <a class="admin-footer-link" href="./admin/" aria-label="Entrar al administrador de SAI FILM">Administración ↗</a>
 </footer>
+<style>
+  .admin-footer-link{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#888;text-decoration:none;transition:color .25s ease}
+  .admin-footer-link:hover,.admin-footer-link:focus-visible{color:#fff}
+  @media(max-width:700px){footer{gap:14px;flex-wrap:wrap}.admin-footer-link{flex-basis:100%;text-align:center;padding-top:8px}}
+</style>
 
 <script>
   const observer = new IntersectionObserver(entries => {
