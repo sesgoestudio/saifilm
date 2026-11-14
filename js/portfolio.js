@@ -10,7 +10,7 @@ function draw(){slides.innerHTML=items.map((m,i)=>'<div class="modal-slide '+(i=
 async function load(){
   grid.innerHTML='<p class="empty">Cargando proyectos…</p>';
   const settingsRequest=supabase.from('site_settings').select('value').eq('key','homepage').maybeSingle();
-  const projectsRequest=supabase.from('projects').select('id,title,summary,description,is_featured,sort_order,category_id').eq('status','published').order('is_featured',{ascending:false}).order('sort_order');
+  const projectsRequest=supabase.from('projects').select('id,title,summary,description,is_featured,sort_order,category_id,cover_media_id').eq('status','published').order('is_featured',{ascending:false}).order('sort_order');
   const [{data:settings},{data:projects,error}]=await Promise.all([settingsRequest,projectsRequest]);
   applySettings(settings?.value);
   if(error){console.error('SAI FILM: error cargando proyectos',error);grid.innerHTML='<p class="empty">No fue posible cargar los proyectos: '+esc(error.message)+'</p>';return}
@@ -24,7 +24,7 @@ async function load(){
   const media=mediaResult.data||[],cats=new Map((catsResult.data||[]).map(x=>[x.id,x.name]));
   projects.forEach(p=>{p.categories={name:cats.get(p.category_id)||'PORTAFOLIO'};p.project_media=media.filter(m=>m.project_id===p.id).sort((a,b)=>Number(b.is_cover)-Number(a.is_cover)||a.sort_order-b.sort_order)});
   grid.innerHTML=projects.map(p=>{
-    const m=p.project_media,cover=m.find(x=>x.media_type==='image'&&asset(x));
+    const m=p.project_media,cover=m.find(x=>x.id===p.cover_media_id&&x.media_type==='image'&&asset(x))||m.find(x=>x.is_cover&&x.media_type==='image'&&asset(x))||m.find(x=>x.media_type==='image'&&asset(x));
     return '<article class="project reveal" data-id="'+p.id+'"><div class="project-image">'+(cover?'<img loading="lazy" referrerpolicy="no-referrer" src="'+esc(asset(cover))+'" alt="'+esc(cover.alt_text||p.title)+'">':'<div class="project-no-image">SAI FILM®<small>Galería próximamente</small></div>')+'</div><div class="project-info"><h3>'+esc(p.title)+'</h3><span>'+esc(p.categories.name)+' / '+String(m.length).padStart(2,'0')+'</span></div><p class="project-summary">'+esc(p.summary||'')+'</p></article>'
   }).join('');
   grid.querySelectorAll('.project-image img').forEach(img=>img.onerror=()=>{img.closest('.project-image').innerHTML='<div class="project-no-image">Galería próximamente</div>'});
