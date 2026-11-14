@@ -87,6 +87,20 @@
     nav a:hover::before { opacity:1; transform:scale(1); }
     nav a:hover::after { transform:scaleX(1); }
 
+
+    .mobile-menu-toggle{display:none}
+    @media(max-width:700px){
+      header{position:fixed}
+      .mobile-menu-toggle{display:flex;flex:0 0 40px;width:40px;height:40px;padding:0;align-items:center;justify-content:center;flex-direction:column;gap:6px;border:1px solid #ffffff28;border-radius:50%;background:#ffffff0b;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:2}
+      .mobile-menu-toggle span{display:block;width:15px;height:1px;background:#f4f2ee;transition:transform .3s, width .3s}
+      header.menu-open .mobile-menu-toggle span:first-child{transform:translateY(3.5px) rotate(45deg)}
+      header.menu-open .mobile-menu-toggle span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+      header nav{display:flex;position:absolute;top:calc(100% + 9px);left:0;right:0;max-width:none;width:100%;padding:9px;flex-direction:column;align-items:stretch;gap:4px;overflow:visible;border:1px solid #ffffff20;border-radius:19px;background:rgba(10,10,10,.94);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);box-shadow:0 18px 45px #0009;opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .25s,visibility .25s,transform .25s}
+      header.menu-open nav{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+      header nav a{display:flex;align-items:center;min-height:44px;padding:12px 15px;font-size:10px;letter-spacing:1.3px}
+      header nav a::after{display:none}
+      header nav a:active,header nav a:hover{background:#ffffff12}
+    }
     .hero {
       min-height: 100svh;
       position: relative;
@@ -359,7 +373,8 @@
 
 <header>
   <a class="logo" href="#">SAI FILM<sup>®</sup></a>
-  <nav>
+  <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteNav"><span></span><span></span></button>
+  <nav id="siteNav">
     <a href="#work">Portafolio</a>
     <a href="#about">Nosotros</a>
     <a href="#services">Servicios</a>
@@ -528,6 +543,20 @@
 <style>
 .service-video{width:100%;min-width:0;background:#050505}.service-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}.service-video span{display:block;padding:9px 10px;font-size:11px;color:#ddd}
 </style>
+
+<script>
+(()=>{
+ const header=document.querySelector('header');
+ const toggle=document.querySelector('.mobile-menu-toggle');
+ const nav=document.querySelector('#siteNav');
+ if(!header||!toggle||!nav)return;
+ const close=()=>{header.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú')};
+ toggle.addEventListener('click',()=>{const open=!header.classList.contains('menu-open');header.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});
+ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ window.addEventListener('resize',()=>{if(window.innerWidth>700)close()});
+})();
+</script>
 </body>
 </html>
 
