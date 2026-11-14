@@ -27,7 +27,7 @@ async function load(){
   if(mediaResult.error){console.error('SAI FILM: error cargando galerías',mediaResult.error);grid.innerHTML='<p class="empty">Los proyectos están disponibles, pero no se pudieron cargar sus galerías. '+esc(mediaResult.error.message)+'</p>';return}
   const media=mediaResult.data||[],cats=new Map((catsResult.data||[]).map(x=>[x.id,x.name]));
   const mediaByProject=new Map();media.forEach(m=>{if(!mediaByProject.has(m.project_id))mediaByProject.set(m.project_id,[]);mediaByProject.get(m.project_id).push(m)});projects.forEach(p=>{p.categories={name:cats.get(p.category_id)||'PORTAFOLIO'};p.project_media=mediaByProject.get(p.id)||[];p.project_media.sort((a,b)=>Number(b.is_cover)-Number(a.is_cover)||a.sort_order-b.sort_order)});
-  grid.innerHTML=projects.map(p=>{
+  grid.innerHTML=projects.map((p,i)=>{
     const m=p.project_media,cover=m.find(x=>x.is_cover&&x.media_type==='image'&&asset(x))||m.find(x=>x.media_type==='image'&&asset(x));
     return '<article class="project reveal" data-id="'+p.id+'"><div class="project-image">'+(cover?'<img '+(i===0?'loading="eager" fetchpriority="high"':'loading="lazy"')+' decoding="async" width="1200" height="825" referrerpolicy="no-referrer" src="'+esc(asset(cover))+'" alt="'+esc(cover.alt_text||p.title)+'">':'<div class="project-no-image">SAI FILM®<small>Galería próximamente</small></div>')+'</div><div class="project-info"><h3>'+esc(p.title)+'</h3><span>'+esc(p.categories.name)+' / '+String(m.length).padStart(2,'0')+'</span></div><p class="project-summary">'+esc(p.summary||'')+'</p></article>'
   }).join('');
