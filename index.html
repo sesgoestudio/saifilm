@@ -539,7 +539,7 @@
 <style>
 #services .services{display:grid;grid-template-columns:1fr;gap:0}.service-accordion{border-bottom:1px solid #555}.service-accordion:first-child{border-top:1px solid #555}.service-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 4px;font-size:clamp(18px,2.5vw,27px);font-weight:500}.service-accordion summary::-webkit-details-marker{display:none}.service-accordion summary:after{content:'＋';font-size:18px;color:#aaa}.service-accordion[open] summary:after{content:'−'}.service-number{font-size:11px;letter-spacing:.12em;color:#999}.service-portfolio-content{padding:0 4px 28px}.service-portfolio-content>p{max-width:650px;color:#aaa;line-height:1.6}.service-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:12px}.service-photo-grid a{display:block;position:relative;overflow:hidden;background:#171717;color:#fff;text-decoration:none}.service-photo-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}.service-photo-grid a:hover img{transform:scale(1.035)}.service-photo-grid a span{display:block;padding:9px 10px;font-size:11px}.service-empty{font-size:13px;color:#999}@media(max-width:600px){.service-accordion summary{padding:18px 2px}.service-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 </style>
-<script type="module" src="./js/portfolio.js?v=17"></script>
+<script type="module" src="./js/portfolio.js?v=18"></script>
 
 <style>
 /* Carrusel editorial minimalista */
@@ -622,6 +622,16 @@
  window.addEventListener('resize',()=>{if(window.innerWidth>700)close()});
 })();
 </script>
+
+<style>
+.service-swipe-hint{display:none;align-items:center;justify-content:center;gap:9px;padding:13px 0 2px;color:#858585;font-size:8px;letter-spacing:.24em;opacity:0;transform:translateY(4px);transition:opacity .35s,transform .35s;pointer-events:none}
+.service-swipe-hint.is-visible{display:flex;opacity:1;transform:translateY(0)}
+.service-swipe-hint i{position:relative;display:block;width:25px;height:1px;background:#666;animation:serviceSwipe 1.35s ease-in-out infinite}
+.service-swipe-hint i:after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid #888;border-right:1px solid #888;transform:rotate(45deg)}
+@keyframes serviceSwipe{0%,100%{transform:translateX(-3px);opacity:.45}50%{transform:translateX(4px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.service-swipe-hint i{animation:none}}
+</style>
+
 </body>
 </html>
 
