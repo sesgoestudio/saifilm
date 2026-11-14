@@ -399,9 +399,27 @@
     .service-carousel-arrow:hover{border-color:#aaa}
     @media(max-width:700px){.service-carousel{display:block;position:relative;margin-top:16px}.service-carousel-track{gap:10px;padding:0 0 8px}.service-carousel-item{flex-basis:100%}.service-carousel-item img,.service-carousel-item iframe{height:58svh;min-height:220px;max-height:560px}.service-carousel-arrow{display:none!important}}
   </style>
+
+<style>
+/* Intro breve de marca SAI FILM */
+#sai-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#080808;opacity:1;visibility:visible;animation:saiIntroOut .55s ease 1.05s forwards;pointer-events:none}
+#sai-intro .intro-logo{position:relative;overflow:hidden;color:#f4f2ee;font-family:Manrope,sans-serif;font-size:clamp(38px,9vw,76px);font-weight:800;letter-spacing:-.085em;opacity:0;transform:translateY(12px);animation:saiLogoIn .65s cubic-bezier(.2,.8,.2,1) .12s forwards}
+#sai-intro .intro-logo sup{font-size:.22em;vertical-align:top;letter-spacing:0;margin-left:3px}
+#sai-intro .intro-logo:after{content:"";position:absolute;inset:-20% auto -20% -45%;width:28%;background:linear-gradient(90deg,transparent,#ffffffb8,transparent);transform:skewX(-22deg);animation:saiShine .65s ease .48s forwards}
+@keyframes saiLogoIn{to{opacity:1;transform:translateY(0)}}
+@keyframes saiShine{to{left:125%}}
+@keyframes saiIntroOut{to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){#sai-intro{animation-duration:.01ms;animation-delay:0s}#sai-intro .intro-logo{animation:none;opacity:1;transform:none}#sai-intro .intro-logo:after{display:none}}
+</style>
+
 </head>
 
 <body>
+<div id="sai-intro" aria-hidden="true"><div class="intro-logo">SAI FILM<sup>®</sup></div></div>
+<script>
+(()=>{const intro=document.getElementById("sai-intro");if(!intro)return;try{if(sessionStorage.getItem("saiIntroSeen")==="1"){intro.remove();return}sessionStorage.setItem("saiIntroSeen","1")}catch(e){}window.setTimeout(()=>intro.remove(),1650)})();
+</script>
+
 
 <header>
   <a class="logo" href="#">SAI FILM<sup>®</sup></a>
