@@ -96,7 +96,7 @@
       .mobile-menu-toggle span{display:block;width:15px;height:1px;background:#f4f2ee;transition:transform .3s, width .3s}
       header.menu-open .mobile-menu-toggle span:first-child{transform:translateY(3.5px) rotate(45deg)}
       header.menu-open .mobile-menu-toggle span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
-      header nav{display:flex;position:absolute;top:calc(100% + 9px);left:0;right:0;max-width:none;width:100%;padding:9px;flex-direction:column;align-items:stretch;gap:4px;overflow:visible;border:1px solid #ffffff20;border-radius:19px;background:rgba(10,10,10,.94);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);box-shadow:0 18px 45px #0009;opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .25s,visibility .25s,transform .25s}
+      header nav{display:flex;position:absolute;top:calc(100% + 9px);left:0;right:0;max-width:none;width:100%;padding:9px;flex-direction:column;align-items:stretch;gap:4px;overflow:visible;border:1px solid rgba(255,255,255,.22);border-radius:19px;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.045));backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:0 20px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.2);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .25s,visibility .25s,transform .25s}
       header.menu-open nav{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
       header nav a{display:flex;align-items:center;min-height:44px;padding:12px 15px;font-size:10px;letter-spacing:1.3px}
       header nav a::after{display:none}
@@ -521,7 +521,7 @@
 <style>
 #services .services{display:grid;grid-template-columns:1fr;gap:0}.service-accordion{border-bottom:1px solid #555}.service-accordion:first-child{border-top:1px solid #555}.service-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 4px;font-size:clamp(18px,2.5vw,27px);font-weight:500}.service-accordion summary::-webkit-details-marker{display:none}.service-accordion summary:after{content:'＋';font-size:18px;color:#aaa}.service-accordion[open] summary:after{content:'−'}.service-number{font-size:11px;letter-spacing:.12em;color:#999}.service-portfolio-content{padding:0 4px 28px}.service-portfolio-content>p{max-width:650px;color:#aaa;line-height:1.6}.service-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));gap:12px}.service-photo-grid a{display:block;position:relative;overflow:hidden;background:#171717;color:#fff;text-decoration:none}.service-photo-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s}.service-photo-grid a:hover img{transform:scale(1.035)}.service-photo-grid a span{display:block;padding:9px 10px;font-size:11px}.service-empty{font-size:13px;color:#999}@media(max-width:600px){.service-accordion summary{padding:18px 2px}.service-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 </style>
-<script type="module" src="./js/portfolio.js?v=14"></script>
+<script type="module" src="./js/portfolio.js?v=15"></script>
 
 <style>
 /* Carrusel editorial minimalista */
