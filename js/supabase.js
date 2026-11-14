@@ -1,7 +1,7 @@
 // SAI FILM — Supabase browser client
 // The publishable key is intended for public frontend use.
 // Protect every exposed table and Storage bucket with RLS policies.
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const SUPABASE_URL = "https://xypnghzmbrwauzcnjaih.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_yyNMJis9Ztw5a7Qnbox3Pg_HLTzLszt";
