@@ -476,9 +476,11 @@
 
 
 <style>
-/* En móvil, evita el zoom por doble toque dentro de la galería.
+/* En móvil, evita el zoom por doble toque en todo el sitio.
    manipulation conserva el desplazamiento y el zoom por pellizco. */
 @media (max-width:700px) {
+  html, body, main, section, a, button, img,
+  .service-carousel, .service-carousel-track, .service-carousel-item,
   #projectModal,
   #projectModal .modal-head,
   #projectModal .modal-slides,
