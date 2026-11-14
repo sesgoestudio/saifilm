@@ -33,3 +33,8 @@ drop policy if exists "Admins update service portfolio files" on storage.objects
 create policy "Admins update service portfolio files" on storage.objects for update to authenticated using (bucket_id='saifilm-media' and name like 'services/%' and exists(select 1 from public.admin_users a where a.user_id=auth.uid())) with check (bucket_id='saifilm-media' and name like 'services/%' and exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 drop policy if exists "Admins delete service portfolio files" on storage.objects;
 create policy "Admins delete service portfolio files" on storage.objects for delete to authenticated using (bucket_id='saifilm-media' and name like 'services/%' and exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
+
+-- Permite guardar videos de YouTube junto a las fotografías de cada servicio.
+alter table public.service_portfolio_media add column if not exists media_type text not null default 'image';
+alter table public.service_portfolio_media drop constraint if exists service_portfolio_media_type_check;
+alter table public.service_portfolio_media add constraint service_portfolio_media_type_check check (media_type in ('image','video'));
