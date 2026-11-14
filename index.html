@@ -463,6 +463,12 @@
 @media(prefers-reduced-motion:reduce){.modal-slide.active{animation:none}}
 </style>
 
+
+/* Evita zoom accidental por doble toque en los controles del carrusel; conserva zoom con pellizco */
+@media (max-width:700px){
+  .modal, .modal * { touch-action: manipulation; }
+}
+
 </body>
 </html>
 
