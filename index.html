@@ -34,14 +34,36 @@
 
     header {
       position: fixed;
-      inset: 0 0 auto;
+      inset: 16px 4% auto;
       z-index: 20;
-      padding: 26px 6%;
+      width: 92%;
+      padding: 13px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(#0009, transparent);
+      gap: 24px;
+      border: 1px solid #ffffff20;
+      border-radius: 999px;
+      background: rgba(12,12,12,.66);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+      backdrop-filter: blur(22px) saturate(145%);
+      box-shadow: 0 10px 40px #0005, inset 0 1px #ffffff12;
+      transition: background .35s, border-color .35s, box-shadow .35s, transform .35s;
+      animation: menuEnter .8s cubic-bezier(.2,.8,.2,1) both;
     }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(110deg,#ffffff45,transparent 32%,#ffffff12 68%,#ffffff35);
+      -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    @keyframes menuEnter { from { opacity:0; transform:translateY(-16px) scale(.985) } to { opacity:1; transform:translateY(0) scale(1) } }
 
     .logo {
       font-family: 'Manrope', sans-serif;
@@ -50,7 +72,7 @@
       letter-spacing: -1.5px;
     }
 
-    nav { display: flex; gap: 30px; }
+    nav { display: flex; align-items:center; gap: 5px; padding: 4px; border:1px solid #ffffff12; border-radius:999px; background:#ffffff08; }
 
     nav a, .menu-label {
       font-size: 10px;
@@ -58,8 +80,12 @@
       text-transform: uppercase;
     }
 
-    nav a { color: #ccc; transition: color .3s; }
-    nav a:hover { color: white; }
+    nav a { position:relative; isolation:isolate; color:#bdbdbd; padding:11px 17px; border-radius:999px; transition:color .3s,background .3s,transform .3s; overflow:hidden; }
+    nav a::before { content:""; position:absolute; inset:0; z-index:-1; border-radius:inherit; background:linear-gradient(135deg,#ffffff20,#ffffff08); opacity:0; transform:scale(.8); transition:opacity .3s,transform .3s; }
+    nav a::after { content:""; position:absolute; height:1px; left:22%; right:22%; bottom:6px; background:#eee; box-shadow:0 0 9px #fff; transform:scaleX(0); transform-origin:center; transition:transform .3s; }
+    nav a:hover { color:white; transform:translateY(-1px); }
+    nav a:hover::before { opacity:1; transform:scale(1); }
+    nav a:hover::after { transform:scaleX(1); }
 
     .hero {
       min-height: 100svh;
@@ -292,9 +318,12 @@
     }
 
     @media(max-width:700px) {
-      header { padding: 20px 5%; }
-      nav { gap: 13px; }
-      nav a { font-size: 8px; letter-spacing: .5px; }
+      header { inset:9px 3% auto; width:94%; padding:10px 12px; gap:8px; border-radius:22px; }
+      .logo { font-size:17px; letter-spacing:-1px; white-space:nowrap; }
+      nav { gap:2px; padding:3px; max-width:76%; overflow-x:auto; scrollbar-width:none; }
+      nav::-webkit-scrollbar { display:none; }
+      nav a { flex:0 0 auto; padding:10px 9px; font-size:8px; letter-spacing:.35px; white-space:nowrap; }
+      nav a::after { bottom:4px; }
       .hero { padding: 0 5% 12%; }
       .hero-bottom { align-items: center; }
       .circle-link { flex-shrink: 0; }
